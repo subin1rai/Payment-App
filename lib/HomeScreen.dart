@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:paymentapp/button.dart';
 import 'package:paymentapp/component/colors.dart';
+import 'package:paymentapp/widgets/Large_button.dart';
 import 'package:paymentapp/widgets/Texted.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,6 +25,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             _headSection(),
             _listBills(),
+            _payButton(),
           ],
         ),
       ),
@@ -73,20 +76,67 @@ class _HomePageState extends State<HomePage> {
     return Positioned(
         bottom: 10,
         right: 50,
-        child: Container(
-          height: 60,
-          width: 60,
-          decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 15,
-                    offset: Offset(0, 1),
-                    color: Color(0xFF11324d).withOpacity(0.2))
-              ],
-              image: DecorationImage(
-                  image: AssetImage(
-                'assets/lines.png',
-              ))),
+        child: GestureDetector(
+          onTap: () {
+            showModalBottomSheet<dynamic>(
+                isScrollControlled: true,
+                barrierColor: Colors.transparent,
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (BuildContext bc) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height - 240,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                            bottom: 0,
+                            child: Container(
+                              color: Color(0xFFeef1f4).withOpacity(0.7),
+                              height: MediaQuery.of(context).size.height - 300,
+                              width: MediaQuery.of(context).size.width,
+                            )),
+                        Positioned(
+                            right: 50,
+                            child: Container(
+                              margin: EdgeInsets.only(),
+                              height: 250,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(29),
+                                  color: BillColor.mainColor),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  AppButtonds(
+                                    icon: Icons.cancel,
+                                    iconColor: BillColor.mainColor,
+                                    background: Colors.white,
+                                    onTap: (){Navigator.pop(context);},
+                                  ),
+                                ],
+                              ),
+                            ))
+                      ],
+                    ),
+                  );
+                });
+          },
+          child: Container(
+            height: 60,
+            width: 60,
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 15,
+                      offset: Offset(0, 1),
+                      color: Color(0xFF11324d).withOpacity(0.2))
+                ],
+                image: DecorationImage(
+                    image: AssetImage(
+                  'assets/lines.png',
+                ))),
+          ),
         ));
   }
 
@@ -100,10 +150,10 @@ class _HomePageState extends State<HomePage> {
           removeTop: true,
           context: context,
           child: ListView.builder(
-            itemCount: 5,
+            itemCount: 3,
             itemBuilder: (_, index) {
               return Container(
-                margin: EdgeInsets.only(top: 20,right: 20),
+                margin: EdgeInsets.only(top: 20, right: 20),
                 height: 130,
                 width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
@@ -184,7 +234,9 @@ class _HomePageState extends State<HomePage> {
                                     child: Text(
                                   'Select',
                                   style: TextStyle(
-                                      fontSize: 16, color: Colors.black,fontWeight: FontWeight.w500),
+                                      fontSize: 16,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500),
                                 )),
                               ),
                               Expanded(child: Container()),
@@ -221,11 +273,20 @@ class _HomePageState extends State<HomePage> {
                         ],
                       )
                     ],
-                  ), 
+                  ),
                 ),
               );
             },
           ),
         ));
+  }
+
+  _payButton() {
+    return Positioned(
+      bottom: 10,
+      child: AppLargeButton(
+        text: "Pay all Bills",
+      ),
+    );
   }
 }
