@@ -26,6 +26,8 @@ class _HomePageState extends State<HomePage> {
             _headSection(),
             _listBills(),
             _payButton(),
+           
+           
           ],
         ),
       ),
@@ -40,6 +42,7 @@ class _HomePageState extends State<HomePage> {
           _mainBackground(),
           _curveImageContainer(),
           _roundButton(),
+          _textContainer(),
         ],
       ),
     );
@@ -98,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                         Positioned(
                             right: 50,
                             child: Container(
-                              margin: EdgeInsets.only(),
+                              padding: EdgeInsets.only(top: 5, bottom: 25),
                               height: 250,
                               width: 60,
                               decoration: BoxDecoration(
@@ -112,7 +115,23 @@ class _HomePageState extends State<HomePage> {
                                     icon: Icons.cancel,
                                     iconColor: BillColor.mainColor,
                                     background: Colors.white,
-                                    onTap: (){Navigator.pop(context);},
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  AppButtonds(
+                                    icon: Icons.add,
+                                    iconColor: BillColor.mainColor,
+                                    background: Colors.white,
+                                    onTap: () {},
+                                    text: "Add Bill",
+                                  ),
+                                  AppButtonds(
+                                    icon: Icons.history,
+                                    iconColor: BillColor.mainColor,
+                                    background: Colors.white,
+                                    onTap: () {},
+                                    text: "History",
                                   ),
                                 ],
                               ),
@@ -287,6 +306,35 @@ class _HomePageState extends State<HomePage> {
       child: AppLargeButton(
         text: "Pay all Bills",
       ),
+    );
+  }
+
+  _textContainer() {
+    return Stack(
+      children: [
+         Positioned(
+                left: 10,
+                top: 100,
+                child: Text(
+                  "My Bills",
+                  style: TextStyle(
+                    fontSize: 70,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF293952),
+                  ),
+                ),
+                ),
+           Positioned(
+                left: 40,
+                top: 80,
+                child: Text(
+                  "My Bills",
+                  style: TextStyle(
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),),
+      ],
     );
   }
 }

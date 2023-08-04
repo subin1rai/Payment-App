@@ -17,7 +17,7 @@ class AppButtonds extends StatelessWidget {
       this.iconColor = Colors.white,
       this.onTap,
       this.background = BillColor.mainColor,
-      this.textColor = BillColor.mainColor});
+      this.textColor = const Color.fromARGB(255, 255, 255, 255)});
 
   @override
   Widget build(BuildContext context) {

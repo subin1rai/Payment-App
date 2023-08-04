@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paymentapp/paymentPage.dart';
 
 import 'HomeScreen.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Payment App',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: PaymentPage(),
       
     );
   }
