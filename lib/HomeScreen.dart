@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:paymentapp/button.dart';
 import 'package:paymentapp/component/colors.dart';
+import 'package:paymentapp/paymentPage.dart';
 import 'package:paymentapp/widgets/Large_button.dart';
 import 'package:paymentapp/widgets/Texted.dart';
 
@@ -304,7 +306,7 @@ class _HomePageState extends State<HomePage> {
     return Positioned(
       bottom: 10,
       child: AppLargeButton(
-        text: "Pay all Bills",
+        text: "Pay all Bills",onTap: (){Get.to(()=>PaymentPage());},
       ),
     );
   }

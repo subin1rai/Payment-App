@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paymentapp/paymentPage.dart';
+import 'package:get/get.dart';
 
 import 'HomeScreen.dart';
 
@@ -11,11 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Payment App',
       debugShowCheckedModeBanner: false,
-      home: PaymentPage(),
-      
+      home:HomePage(),
+       
     );
   }
 }
